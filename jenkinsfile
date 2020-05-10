@@ -1,0 +1,18 @@
+pipeline {
+   agent any
+   environment{
+       PATH = "C:\\Program Files\\maven\\apache-maven-3.5.0\\bin:$PATH"
+   }
+   stages {
+      stage('Git Check out') {
+         steps {
+            git 'https://github.com/mrityunjaybiswas/mvntest.git'
+         }
+      }
+      stage("Maven Build"){
+          steps{
+              bat "mvn clean package"
+          }
+      }
+   }
+}
